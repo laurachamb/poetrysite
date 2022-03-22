@@ -16,17 +16,56 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   position:absolute;
   top: 70px;
   left: 470px;
-  z-index: 2;
-  height: 300px;
-  width: 200px;
+  z-index: 0;
+  height: 275px;
+  width: 175px;
 }
+mark {
+  background-color: lightgrey;
+}
+mark:hover {
+  background-color: magenta;
+  color: white;
+}
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 300px;
+  height: 400px;
+  background-color: lightgrey;
+  color: black;
+  text-align: center;
+  font-size: 25px;
+  padding: 10px 0;
+  position: absolute;
+  z-index: 1;
+  top: 50px;
+  left: 1000px;
+  margin-left: -80px;
+}
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+}
+
+
 </style>
 </head>
 <body>
 
 <!-- Navbar -->
 <div class="w3-top">
-  <div class="w3-bar w3-pink w3-left-align w3-large" style="z-index: 3;">
+  <div class="w3-bar w3-pink w3-left-align w3-large" style="z-index: 1;">
     <h3 class="w3-left w3-text-pink w3-monospace" style="text-shadow:1px 1px 0 white; padding:2px;">Poetic Genius</h3>
   </div>
 
@@ -40,27 +79,63 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </div>
 
 <!-- Header -->
-<header class="w3-container w3-pink" style="padding:40px 16px">
+<header class="w3-container w3-pink" style="padding:40px 16px; height: 320px; z-index: 0;">
   <p style="position: absolute; top: 50px; left:675px; font-size: 20px; font-wight: bold;">Of All The Dead That Have Come To Me, This Once</p>
     <a href="/" style="position: absolute; top: 100px; left:675px; font-size: 14px;">Sharon Olds</a>
-  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>
+  <p style="position: absolute; top: 110px; left:675px; font-size: 14px;">Page 21 of <a href="https://www.goodreads.com/book/show/162900.The_Dead_and_the_Living">The Dead and the Living</a>
+  </br></br></br></br></br>Released 1984</p>
 </header>
 <img class="front" src="data:image/jpeg;base64,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">
 <!-- First Grid -->
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-twothird">
-      <h1>Lorem Ipsum</h1>
-      <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+      <p>I have never written against the dead. I would
+      <div class="popup" style="padding: 0px;" onclick="popFunction()"><mark>empty</mark>
+  <span class="popuptext" id="myPopup">
+    <div style="text-align: left; font-size: 14px; padding: 10px;">
+    Genius Annotataion</br></br>
+    </div>
+      Olds end the line with the word "empty" emphasizing the way her or her grandfather might have felt.</span>
+</div>
+      </p>
 
+      <!--
+      <pre class="w3-padding-32" style="font-size: 20px; font-family: Lato, sans-serif">
+I have never written against the dead. I would
+               open my
+shirt to them and say yes, the white
+cones still making sugary milk,
+
+but when Grandfather's gold pocketwatch
+came in by air over the Rockies,
+over the dark yellow of the fields
+and the black rivers, with Grandmother's black
+face pressed against his name in the back,
+
+        I thought of how he put the </pre>
+      <div class="popup" onclick="popFunction()"><span class="popuptext" id="myPopup"><mark>empty</mark></span></div>
+      <pre>
+plate in front of my sister, turned out
+the lights after supper, sat in the black
+room with the fire, the light of the flames
+flashing in his glass eye
+in that cabin where he taught my father
+how to do what he did to me, and I said
+
+No. I said Let this one be dead.
+Let the fall he made through that glass roof,
+splintering, turning, the great shanks and
+splices of glass in the air, be his last
+appearance here.
+      </pre>
+-->
       <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
         laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
 
-    <div class="w3-third w3-center">
-      <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
-    </div>
+
   </div>
 </div>
 
@@ -108,6 +183,10 @@ function myFunction() {
   } else {
     x.className = x.className.replace(" w3-show", "");
   }
+}
+function popFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
 }
 </script>
 
